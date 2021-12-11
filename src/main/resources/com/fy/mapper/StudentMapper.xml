@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fy.mapper.StudentMapper">
+
+    <insert id="addStudent" parameterType="com.fy.entity.Student">
+        insert into mybatis.student (id, name, major, phone)
+        values (#{id}, #{name}, #{major}, #{phone})
+    </insert>
+
+    <update id="updateStudent" parameterType="string">
+        update mybatis.student
+        set name  = #{name},
+            major = #{major},
+            phone = #{phone}
+        where id = #{id}
+    </update>
+
+    <delete id="deleteStudent" parameterType="string">
+        delete
+        from mybatis.student
+        where id = #{id}
+    </delete>
+
+    <select id="findAll" resultType="com.fy.entity.Student">
+        select *
+        from mybatis.student;
+    </select>
+
+    <select id="findStudentById" parameterType="string" resultType="com.fy.entity.Student">
+        select *
+        from mybatis.student
+        where id = #{id}
+    </select>
+
+<!--    <select id="mo" parameterType="string" resultType="com.fy.entity.Student">-->
+<!--        select *-->
+<!--        from mybatis.student-->
+<!--        where name like concat('%',#{n},'%')-->
+<!--    </select>-->
+
+</mapper>
